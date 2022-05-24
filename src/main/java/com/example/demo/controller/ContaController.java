@@ -37,7 +37,7 @@ public class ContaController {
 	}
 	
 	@GetMapping("/{numero}")
-	public Conta getOne(@PathVariable String numero) throws ContaNotException {
+	public Conta getOne(@PathVariable Integer numero) throws ContaNotException {
 		return service.listarConta(numero);
 	}
 	
@@ -48,17 +48,17 @@ public class ContaController {
 	}
 	
 	@PutMapping("/{numero}")
-	public Conta update(@RequestBody Conta conta, @PathVariable String numero) throws ContaExistenteException, ContaNotException {
+	public Conta update(@RequestBody Conta conta, @PathVariable Integer numero) throws ContaExistenteException, ContaNotException {
 		return service.atualizar(conta, numero);
 	}
 	
 	@DeleteMapping("/{numero}")
-	public void delete(@PathVariable String numero) throws ContaNotException {
+	public void delete(@PathVariable Integer numero) throws ContaNotException {
 		service.deletar(numero);
 	}
 	
 	@PostMapping("/{numero}/{operacao}")
-	public Conta operation(@PathVariable String numero, @PathVariable Integer operacao, @RequestBody Double valor) throws SaldoInsuficienteException, ContaNotException, OperacaoInexistente {
+	public Conta operation(@PathVariable Integer numero, @PathVariable Integer operacao, @RequestBody Double valor) throws SaldoInsuficienteException, ContaNotException, OperacaoInexistente {
 		return service.operacao(numero, operacao, valor);
 	}
 
